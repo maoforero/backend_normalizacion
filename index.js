@@ -1,17 +1,11 @@
-const express = require('express')
-const app = express()
-const routerPro = require('./src/routes/productos.js')
+const express = require('express');
+const app = express();
+const router = require('./src/routes')
 const PORT = 3000
 
 app.use(express.static(__dirname + 'public'));
+app.use(express.json());
+app.use("/api", router)
 
-app.get("/api", (req, res) => {
-  res.send("Server")
-})
-
-app.use("/products", routerPro);
-
-app.listen(PORT,(req, res) => {
-  console.log(`It's Alive 🤖 http://localhost:${PORT}`)
-})
+app.listen(PORT, () => console.log(`It's Alive 🤖 http://localhost:${PORT}`))
 
