@@ -1,7 +1,8 @@
+const Data =  require('../../../list.json');
 const controller = {};
 
 controller.index = (req, res) => {
-  res.send("products");
+  res.send(Data);
 };
 
 controller.post = (req, res) => {
@@ -9,7 +10,23 @@ controller.post = (req, res) => {
   res.json({
     msg: 'objeto creado',
     data: 'gg'
-  })
+  });
+}
+
+controller.put = (req, res) => {
+  const {idItem} = req.params;
+  const item = Data.find((item) => item.id === idItem);
+  if(item){
+    const {id, name, price} = req.body;
+    item.id = id;
+    item.name = name;
+    item.price = price;
+    res.json({
+      msg: `Item ${id} update`
+    });
+    return;
+  }
+  res.json({msg:`Item Unknow`})
 }
 
 module.exports = controller
