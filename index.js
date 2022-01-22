@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
-const router = require('./src/Routes')
 const PORT = 3000
+
+//Routes
+app.use("/api", require('./src/routes'))
+
 
 app.use(express.static(__dirname + 'public'));
 app.use(express.json());
-app.use("/api", router)
+
 
 app.listen(PORT, () => console.log(`It's Alive 🤖 http://localhost:${PORT}`))
 

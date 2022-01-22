@@ -3,7 +3,7 @@ const router = express.Router();
 const routerProducts = require('./products')
 
 router.get("/", (req, res) => {
-  res.send('api')
+  res.send('home')
 })
 
 router.use('/products', routerProducts);
