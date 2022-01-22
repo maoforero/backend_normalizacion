@@ -29,4 +29,13 @@ controller.put = (req, res) => {
   res.json({msg:`Item Unknow`})
 }
 
+controller.delete = (req, res) => {
+  const idItem = Data.find((idItem) => (idItem.id = req.params.id));
+  id(idItem){
+    idItem.splice(idItem, 1);
+    res.json({msg: `Item ${idItem} deleted`});
+  }
+  res.json({msg: `Item ${idItem} unknow`});
+}
+
 module.exports = controller
